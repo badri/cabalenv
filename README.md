@@ -44,14 +44,14 @@ Example 1:
 
 ```
 cd /usr/local/bin
-sudo wget https://raw.githubusercontent.com/calvinchengx/cabalenv/master/cabalenv.sh
+sudo wget https://raw.githubusercontent.com/badri/cabalenv/master/cabalenv.sh
 sudo chmod +x cabalenv.sh
 ```
 
 Example 2:
 
 ```
-git clone git@github.com:calvinchengx/cabalenv.git
+git clone git@github.com:badri/cabalenv.git
 cd cabalenv
 sudo ln -s "$(pwd)/cabalenv.sh" /usr/local/bin/cabalenv.sh
 sudo chmod +x /usr/local/bin/cabalenv.sh
