@@ -10,7 +10,9 @@ _checkenvexists() {
 	local res="$(lscabalenv)"
 	echo "Checking if $1 is already present"
 	string=$(find $HS_PROJ_HOME -name .cabal-sandbox  2>/dev/null | xargs -I{} dirname {} | xargs -I{} basename {});
-	arr=(${(f)string})  # This works only for zsh
+	IFS=$'\n'
+	arr=(${string})
+	unset IFS
 	for i in $arr; do
 		if [[ $i == $1 ]]; then
 			echo $1" already exists."
@@ -23,7 +25,7 @@ _checkenvexists() {
 
 _removeoldpath() {
 	local string=$PATH
-	old_arr=(${(s/:/)string})  # This works only for zsh
+	old_arr=(${string//:/ })
 	new_arr=""
 	for i in $old_arr; do
 		if [[ ! $i =~ "$1" ]]; then
@@ -76,7 +78,9 @@ lscabalenv() {
 	else
 		string=$(find $HS_PROJ_HOME -name .cabal-sandbox  2>/dev/null | xargs -I{} dirname {} | xargs -I{} basename {});
 		echo $string;
-		arr=(${(f)string})  # This works only for zsh
+		IFS=$'\n'
+		arr=(${string})
+		unset IFS
 		return 0
 	fi
 }
